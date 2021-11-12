@@ -29,11 +29,14 @@ public class Tree {
                 for (int i = 0; i < directions.length; i++) {
                     anchor = anchor.getChild(directions[i]);
                 }
-                anchor.setChild(element);
+                //anchor.setChild(element);
             } catch (NullPointerException ignored) {
                 System.out.println("");
             }
         }
+
+
+        return true;
     }
 
 }
