@@ -25,41 +25,48 @@ public class BBaum {
      */
     public void addElement(Knoten knoten) {
 
-        // fängt aufrufe ab bei denen gegebenes elem gleich null ist; verhindert NullPointerException
+        // fängt aufrufe ab bei denen gegebenes knoten gleich null ist; verhindert NullPointerException
         if (knoten == null) {
             System.out.println("Smth went wrong");
             return;
         }
 
-        // weißt wurzel dem element zu und returnt wenn wurzel leer ist; verhindert Endlosschleife
+        // weist wurzel dem element zu und returnt wenn wurzel leer ist; verhindert Endlosschleife
         if (wurzel == null) {
             wurzel = knoten;
             return;
         }
 
-        // ausgangsknoten (anchor) wird mit wurzel initialisiert; durchlauf startet bei wurzel
+        // vergleichsknoten (anchor) wird mit wurzel initialisiert; durchlauf startet bei wurzel
         Knoten anchor = wurzel;
 
         // durchläuft baum bis freier platz gefunden wird, returnt wenn gefunden u. angefuegt
         while (true) {
 
-            // wenn daten des elems kleiner/gleich dem ausgangsknoten sind
+            // wenn daten des knoten kleiner/gleich dem ausgangsknoten sind
             if (knoten.getInhalt() <= anchor.getInhalt()) {
+
+                // fügt knoten an und returnt falls links noch frei ist, returnt
                 if (anchor.getLeft() == null) {
                     anchor.setLeft(knoten);
                     return;
                 }
+
+                // wenn links nicht frei ist wird der dortige knoten als vergleichsknoten zugewiesen
                 else {
                     anchor = anchor.getLeft();
                 }
             }
 
-            // wenn daten des elems größer als ausgangsknoten sind
+            // wenn daten des knoten größer als ausgangsknoten sind
             else {
+
+                // fügt knoten an und returnt falls links noch frei ist
                 if (anchor.getRight() == null) {
                     anchor.setRight(knoten);
                     return;
                 }
+                // wenn links nicht frei ist wird der dortige knoten als vergleichsknoten zugewiesen
                 else {
                     anchor = anchor.getRight();
                 }
