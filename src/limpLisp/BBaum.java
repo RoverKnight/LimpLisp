@@ -23,15 +23,15 @@ public class BBaum {
      * @author goose
      *
      */
-    public void addElement(Knoten knoten) {
+    public void addElementIteratively(Knoten knoten) {
 
-        // fängt aufrufe ab bei denen gegebenes knoten gleich null ist; verhindert NullPointerException
+        // fängt aufrufe ab bei denen gegebener knoten gleich null ist; verhindert NullPointerException
         if (knoten == null) {
             System.out.println("Smth went wrong");
             return;
         }
 
-        // weist wurzel dem element zu und returnt wenn wurzel leer ist; verhindert Endlosschleife
+        // weist knoten der wurzel zu und returnt wenn wurzel leer ist; verhindert NullPointerException
         if (wurzel == null) {
             wurzel = knoten;
             return;
@@ -40,7 +40,7 @@ public class BBaum {
         // vergleichsknoten (anchor) wird mit wurzel initialisiert; durchlauf startet bei wurzel
         Knoten anchor = wurzel;
 
-        // durchläuft baum bis freier platz gefunden wird, returnt wenn gefunden u. angefuegt
+        // durchläuft baum bis freier platz gefunden, returnt wenn gefunden u. angefuegt
         while (true) {
 
             // wenn daten des knoten kleiner/gleich dem ausgangsknoten sind
@@ -61,7 +61,7 @@ public class BBaum {
             // wenn daten des knoten größer als ausgangsknoten sind
             else {
 
-                // fügt knoten an und returnt falls links noch frei ist
+                // fügt knoten an und returnt falls rechts noch frei ist
                 if (anchor.getRight() == null) {
                     anchor.setRight(knoten);
                     return;
@@ -72,8 +72,14 @@ public class BBaum {
                 }
             }
         }
-
     }
+
+    public void addElementRecursively(Knoten knoten, Knoten anker) { Knoten anchor = anker;
+        if (wurzel == null) wurzel = knoten;
+        else { if (knoten.getInhalt() <= anchor.getInhalt()) { if (anchor.getLeft() == null) anchor.setLeft(knoten);
+                else { addElementRecursively(knoten, anker.getLeft());}}
+            else { if (anchor.getRight() == null) anchor.setRight(knoten);
+                else { addElementRecursively(knoten, anker.getRight()); }}}}
 
     public void deleteKnoten(Knoten knoten) {
 

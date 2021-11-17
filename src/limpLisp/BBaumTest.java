@@ -62,7 +62,39 @@ public class BBaumTest {
 
         BBaum tree = new BBaum();
         for (Knoten knoten : knotenArray) {
-            tree.addElement(knoten);
+            tree.addElementIteratively(knoten);
+        }
+
+        String nl = System.lineSeparator();
+        System.out.println("Pre:");
+        tree.ausgebenPre();
+        System.out.println(nl + "Post:");
+        tree.ausgebenPost();
+        System.out.println(nl + "In:");
+        tree.ausgebenIn();
+
+    }
+
+    @Test
+    public void addTest2() {
+        Knoten[] knotenArray = {
+                new Knoten(30),
+                new Knoten(15),
+                new Knoten(36),
+                new Knoten(7),
+                new Knoten(21),
+                new Knoten(34),
+                new Knoten(41),
+                new Knoten(3),
+                new Knoten(11),
+                new Knoten(16),
+                new Knoten(25),
+                new Knoten(33)
+        };
+
+        BBaum tree = new BBaum();
+        for (Knoten knoten : knotenArray) {
+            tree.addElementRecursively(knoten, tree.getWurzel());
         }
 
         String nl = System.lineSeparator();
