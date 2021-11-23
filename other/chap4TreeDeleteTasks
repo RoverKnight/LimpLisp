@@ -1,0 +1,89 @@
+# 4.09
+------
+1
+2
+1
+2
+1
+2
+
+# 4.10
+------
+3 -5
+2 -7
+3 -16
+1 -14
+3 -9
+3 -10
+
+# 4.11
+------
+a)
+    Inorder: 3 5 7 8 9 12 14 16 19
+    a: 7
+    b: 12
+    c: 19
+b)
+    d: 12
+    e: 16
+
+# 4.12
+------
+Pseudocode:
+
+DeleteThatBoy(integer key):
+
+    Knoten parent = null
+    Knoten lowest = null
+    Knoten vergleichsknoten = wurzel
+
+    solange break nicht erreicht:
+    
+        wenn key gleich vergleichsknoten:
+            
+            vergleichsknoten hat 0 Kinder:
+            
+                
+            
+            vergleichsknoten hat 1 Kinder:
+            
+                
+            
+            vergleichsknoten hat 2 Kinder:
+            
+                
+            
+        sonst:
+            
+            wenn key kleiner als vergleichsknoten:
+            
+                vergleichsknoten = linkes Kind von vergleichsknoten
+            
+            sonst:
+            
+                vergleichsknoten = rechtes Kind von vergleichsknoten
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
