@@ -1,8 +1,38 @@
 package limpLisp;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BBaumTest {
+
+    Knoten[] knotenArray;
+    BBaum tree;
+
+    @BeforeEach
+    public void setUp() {
+        knotenArray = new Knoten[]{
+                new Knoten(30),
+                new Knoten(15),
+                new Knoten(36),
+                new Knoten(7),
+                new Knoten(21),
+                new Knoten(34),
+                new Knoten(41),
+                new Knoten(3),
+                new Knoten(11),
+                new Knoten(16),
+                new Knoten(25),
+                new Knoten(33)
+        };
+        tree = new BBaum();
+        for (Knoten knoten : knotenArray) {
+            tree.addElementIteratively(knoten);
+        }
+    }
+
+    public void reset() {
+        setUp();
+    }
 
     @Test
     public void printTest() {
@@ -44,7 +74,7 @@ public class BBaumTest {
     }
 
     @Test
-    public void addTest() {
+    public void iterativeAddTest() {
         Knoten[] knotenArray = {
                 new Knoten(30),
                 new Knoten(15),
@@ -76,26 +106,7 @@ public class BBaumTest {
     }
 
     @Test
-    public void addTest2() {
-        Knoten[] knotenArray = {
-                new Knoten(30),
-                new Knoten(15),
-                new Knoten(36),
-                new Knoten(7),
-                new Knoten(21),
-                new Knoten(34),
-                new Knoten(41),
-                new Knoten(3),
-                new Knoten(11),
-                new Knoten(16),
-                new Knoten(25),
-                new Knoten(33)
-        };
-
-        BBaum tree = new BBaum();
-        for (Knoten knoten : knotenArray) {
-            tree.addElementRecursively(knoten, tree.getWurzel());
-        }
+    public void recursiveAddTest() {
 
         String nl = System.lineSeparator();
         System.out.println("Pre:");
@@ -105,6 +116,54 @@ public class BBaumTest {
         System.out.println(nl + "In:");
         tree.ausgebenIn();
 
+    }
+
+    @Test
+    public void getParentTest() {
+
+        for (Knoten knoten : knotenArray) {
+            try {
+                System.out.println("c: " + knoten.getInhalt() + "   p: " + tree.getParent(knoten).getInhalt());
+            } catch (NullPointerException ignored) {
+                System.out.println("c: " + knoten.getInhalt() + "   p: null");
+            }
+        }
+
+    }
+
+    @Test
+    public void getLowestFromSubtreeTest() {
+
+        for (Knoten knoten : knotenArray) {
+            System.out.print("k: " + knoten.getInhalt() + "   l: ");
+            try {
+                System.out.println(tree.getLowestFromSubtree(knoten.getInhalt()).getInhalt());
+            } catch (NullPointerException ignored) {
+                System.out.println("null");
+
+            }
+
+        }
+    }
+
+    @Test
+    public void deleteTest() {
+
+        /*
+        for (Knoten knoten : knotenArray) {
+            reset();
+            tree.deleteKnoten(knoten.getInhalt());
+            System.out.println("Deleted knot: " + knoten.getInhalt());
+            tree.ausgebenIn();
+        }
+        */
+
+        for (int i = 1; i < knotenArray.length; i++) {
+            reset();
+            tree.deleteKnoten(knotenArray[i].getInhalt());
+            System.out.println("Deleted knot: " + knotenArray[i].getInhalt());
+            tree.ausgebenIn();
+        }
     }
 
 }

@@ -81,9 +81,132 @@ public class BBaum {
             else { if (anchor.getRight() == null) anchor.setRight(knoten);
                 else { addElementRecursively(knoten, anker.getRight()); }}}}
 
-    public void deleteKnoten(Knoten knoten) {
+    public Knoten getParent(Knoten child) {
+        if (child == null || child == wurzel || wurzel == null || wurzel.getNumOfChildren() == 0){
+            return null;
+        }
 
+        Knoten anchor = wurzel;
+        while (anchor.getLeft() != child && anchor.getRight() != child) {
+
+            int anchorData = anchor.getInhalt();
+            int childData = child.getInhalt();
+
+            if (childData < anchorData) {
+                anchor = anchor.getLeft();
+            }
+            else if (childData > anchorData) {
+                anchor = anchor.getRight();
+            }
+
+            // if you're here something went horribly wrong; data is equal
+            else {
+                System.out.println("well fuck");
+            }
+        }
+
+        return anchor;
     }
+
+    public Knoten getLowestFromSubtree(Knoten subtreeRoot) {
+
+        if (subtreeRoot == null){
+            return null;
+        }
+
+        Knoten anchor = subtreeRoot;
+        while (anchor.getLeft() != null) {
+            anchor = anchor.getLeft();
+        }
+
+        return anchor;
+    }
+
+    public Knoten getLowestFromSubtree(int keyOfSubtreeRoot) {
+
+        // search for root of subtree
+        Knoten anchor = wurzel;
+        boolean shouldRun = true;
+        while (shouldRun) {
+            if (anchor.getInhalt() == keyOfSubtreeRoot) {
+                shouldRun = false;
+            }
+            else if (anchor.getLeft() != null && keyOfSubtreeRoot < anchor.getInhalt()) {
+                anchor = anchor.getLeft();
+            }
+            else if (anchor.getRight() != null) {
+                anchor = anchor.getRight();
+            }
+            else {
+                return null;
+            }
+        }
+
+        Knoten x = getLowestFromSubtree(anchor);
+        return x;
+    }
+
+    public void deleteKnoten(int key) {
+
+        Knoten parent = null;
+        Knoten anchor = wurzel;
+
+        while (true) {
+            int data = anchor.getInhalt();
+
+            if (key == data) {
+                System.out.println(key + " == " + data);
+
+                parent = getParent(anchor);
+                boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
+                int numOfChildren = anchor.getNumOfChildren();
+
+                if (numOfChildren == 0) {
+                    if (isLeftChild) parent.setLeft(null);
+                    else parent.setRight(null);
+                }
+                else if (numOfChildren == 1) {
+                    if (isLeftChild) {
+                        parent.setLeft(anchor.getLeft());
+                    }
+                    else {
+                        parent.setRight(anchor.getRight());
+                    }
+                }
+                else if (numOfChildren == 2) {
+                    Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
+                    System.out.println("lowest from right sub: " + lowestKnot.getInhalt());
+                    if (isLeftChild) {
+                        System.out.println("is left c of " + parent.getInhalt());
+                        parent.setLeft(lowestKnot);
+                        System.out.println("p.-ref: " + parent.getLeft().getInhalt());
+                    }
+                    else {
+                        System.out.println("is right c");
+                        parent.setRight(lowestKnot);
+                    }
+                    Knoten lowestParent = getParent(lowestKnot);
+                    if (lowestParent.getLeft() == lowestKnot) lowestParent.setLeft(null);
+                    else lowestParent.setRight(null);
+                    lowestKnot.setLeft(anchor.getLeft());
+                    lowestKnot.setRight(anchor.getRight());
+                }
+                anchor.setLeft(null);
+                anchor.setRight(null);
+                return;
+            }
+
+            // if knot not found
+            else if (key < data) {
+                anchor = anchor.getLeft();
+            }
+            else {
+                anchor = anchor.getRight();
+            }
+        }
+    }
+
+
 
     public void ausgebenPre() {
         ausgebenPre(getWurzel());
