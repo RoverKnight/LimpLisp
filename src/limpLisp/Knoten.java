@@ -11,6 +11,12 @@ public class Knoten {
         this.inhalt = inhalt;
     }
 
+    public int getNumOfChildren() {
+        int count = 0;
+        if (left != null) count++;
+        if (right != null) count++;
+        return count;
+    }
 
     public int getInhalt() {
         return inhalt;
