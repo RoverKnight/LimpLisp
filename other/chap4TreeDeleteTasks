@@ -39,19 +39,53 @@ DeleteThatBoy(integer key):
 
     solange break nicht erreicht:
     
-        wenn key gleich vergleichsknoten:
+        wenn key gleich (inhalt von) vergleichsknoten:
             
             vergleichsknoten hat 0 Kinder:
             
-                
+                parent = getParent(vergleichsknoten)
+
+                wenn vergleichsknoten l. Kind von vergleichsknoten ist:
+
+                    l. Kind von parent = null
+
+                sonst (i.e. wenn r. Kind):
+
+                    r. Kind von parent = null
+
+                BREAK
             
-            vergleichsknoten hat 1 Kinder:
+            vergleichsknoten hat 1 Kind:
             
-                
+                parent = getParent(vergleichsknoten)
+
+                wenn vergleichsknoten l. Kind von vergleichsknoten ist:
+
+                    l. Kind von parent = l. Kind von vergleichsknoten
+
+                sonst (i.e. wenn r. Kind):
+
+                    r. Kind von parent = r. Kind von vergleichsknoten
+
+                BREAK
             
             vergleichsknoten hat 2 Kinder:
             
-                
+                parent = getParent(vergleichsknoten)
+
+                lowestKnot = getLowestFrom(vergleichsknoten)
+
+                wenn vergleichsknoten l. Kind von vergleichsknoten ist:
+
+                    l. Kind von parent = lowestKnot
+
+                sonst (i.e. wenn r. Kind):
+
+                    r. Kind von parent = lowestKnot
+
+                l. Kind von lowestKnot = l. Kind von vergleichsknoten
+
+                BREAK
             
         sonst:
             
