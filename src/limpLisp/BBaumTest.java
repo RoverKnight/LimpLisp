@@ -148,20 +148,10 @@ public class BBaumTest {
 
     @Test
     public void deleteTest() {
-
-        /*
         for (Knoten knoten : knotenArray) {
             reset();
             tree.deleteKnoten(knoten.getInhalt());
             System.out.println("Deleted knot: " + knoten.getInhalt());
-            tree.ausgebenIn();
-        }
-        */
-
-        for (int i = 1; i < knotenArray.length; i++) {
-            reset();
-            tree.deleteKnoten(knotenArray[i].getInhalt());
-            System.out.println("Deleted knot: " + knotenArray[i].getInhalt());
             tree.ausgebenIn();
         }
     }

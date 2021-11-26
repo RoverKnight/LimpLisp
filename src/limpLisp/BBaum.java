@@ -151,11 +151,16 @@ public class BBaum {
         Knoten parent = null;
         Knoten anchor = wurzel;
 
+        // if is root
+        if (key == wurzel.getInhalt()) {
+            wurzel = null;
+            return;
+        }
+
         while (true) {
             int data = anchor.getInhalt();
 
             if (key == data) {
-                System.out.println(key + " == " + data);
 
                 parent = getParent(anchor);
                 boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
@@ -175,21 +180,18 @@ public class BBaum {
                 }
                 else if (numOfChildren == 2) {
                     Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
-                    System.out.println("lowest from right sub: " + lowestKnot.getInhalt());
+                    Knoten lowestParent = getParent(lowestKnot);
                     if (isLeftChild) {
-                        System.out.println("is left c of " + parent.getInhalt());
                         parent.setLeft(lowestKnot);
-                        System.out.println("p.-ref: " + parent.getLeft().getInhalt());
                     }
                     else {
-                        System.out.println("is right c");
                         parent.setRight(lowestKnot);
                     }
-                    Knoten lowestParent = getParent(lowestKnot);
-                    if (lowestParent.getLeft() == lowestKnot) lowestParent.setLeft(null);
-                    else lowestParent.setRight(null);
+                    if (lowestParent != anchor) {
+                        lowestParent.setLeft(lowestKnot.getRight());
+                        lowestKnot.setRight(anchor.getRight());
+                    }
                     lowestKnot.setLeft(anchor.getLeft());
-                    lowestKnot.setRight(anchor.getRight());
                 }
                 anchor.setLeft(null);
                 anchor.setRight(null);
@@ -209,15 +211,16 @@ public class BBaum {
 
 
     public void ausgebenPre() {
-        ausgebenPre(getWurzel());
-    }
+        if (wurzel != null) ausgebenPre(getWurzel());
+        else System.out.println("Tree is empty");    }
 
     public void ausgebenPost() {
-        ausgebenPost(getWurzel());
-    }
+        if (wurzel != null) ausgebenPost(getWurzel());
+        else System.out.println("Tree is empty");    }
 
     public void ausgebenIn() {
-        ausgebenIn(getWurzel());
+        if (wurzel != null) ausgebenIn(getWurzel());
+        else System.out.println("Tree is empty");
     }
 
     private void ausgebenPre(Knoten knoten) {
