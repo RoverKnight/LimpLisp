@@ -18,11 +18,6 @@ public class BBaum {
         return wurzel;
     }
 
-    /**
-     * @param knoten Der Knoten der angefuegt werden soll.
-     * @author goose
-     *
-     */
     public void addElementIteratively(Knoten knoten) {
 
         // fängt aufrufe ab bei denen gegebener knoten gleich null ist; verhindert NullPointerException
@@ -74,12 +69,25 @@ public class BBaum {
         }
     }
 
-    public void addElementRecursively(Knoten knoten, Knoten anker) { Knoten anchor = anker;
+    public void addElementRecursively(Knoten knoten) {
+        addElementRecursively(knoten, wurzel);
+    }
+
+    public void addElementRecursively(Knoten knoten, Knoten anchor) {
         if (wurzel == null) wurzel = knoten;
-        else { if (knoten.getInhalt() <= anchor.getInhalt()) { if (anchor.getLeft() == null) anchor.setLeft(knoten);
-                else { addElementRecursively(knoten, anker.getLeft());}}
-            else { if (anchor.getRight() == null) anchor.setRight(knoten);
-                else { addElementRecursively(knoten, anker.getRight()); }}}}
+        else {
+            if (knoten.getInhalt() <= anchor.getInhalt()) {
+                if (anchor.getLeft() == null) anchor.setLeft(knoten);
+                else { addElementRecursively(knoten, anchor.getLeft());
+                }
+            }
+            else {
+                if (anchor.getRight() == null) anchor.setRight(knoten);
+                else { addElementRecursively(knoten, anchor.getRight());
+                }
+            }
+        }
+    }
 
     public Knoten getParent(Knoten child) {
         if (child == null || child == wurzel || wurzel == null || wurzel.getNumOfChildren() == 0){
@@ -142,13 +150,12 @@ public class BBaum {
             }
         }
 
-        Knoten x = getLowestFromSubtree(anchor);
-        return x;
+        return getLowestFromSubtree(anchor);
     }
 
     public void deleteKnoten(int key) {
 
-        Knoten parent = null;
+        Knoten parent;
         Knoten anchor = wurzel;
 
         // if is root
@@ -225,40 +232,23 @@ public class BBaum {
 
     private void ausgebenPre(Knoten knoten) {
         System.out.println(knoten.getInhalt());
-        try {
-            ausgebenPre(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
-        try {
-            ausgebenPre(knoten.getRight());
-        } catch (NullPointerException ignored) {}
+        if (knoten.getLeft() != null)  ausgebenPre(knoten.getLeft());
+        if (knoten.getRight() != null) ausgebenPre(knoten.getRight());
     }
 
     private void ausgebenPost(Knoten knoten) {
-        try {
-            ausgebenPost(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
-        try {
-            ausgebenPost(knoten.getRight());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getLeft() != null)  ausgebenPost(knoten.getLeft());
+        if (knoten.getRight() != null) ausgebenPost(knoten.getRight());
         System.out.println(knoten.getInhalt());
     }
 
     private void ausgebenIn(Knoten knoten) {
-        try {
-            ausgebenIn(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getLeft() != null)  ausgebenIn(knoten.getLeft());
         System.out.println(knoten.getInhalt());
-
-        try {
-            ausgebenIn(knoten.getRight());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getRight() != null) ausgebenIn(knoten.getRight());
     }
 
+    /*
     public Knoten getByPfad(boolean[] directions) {
         return null;
     }
@@ -286,10 +276,5 @@ public class BBaum {
     public void clear() {
         wurzel = null;
     }
-
-
-
-
-
-
+    */
 }
