@@ -164,58 +164,53 @@ public class BBaum {
             return;
         }
 
-        while (true) {
-            int data = anchor.getInhalt();
+        else {
+            while (true) {
+                int data = anchor.getInhalt();
 
-            if (key == data) {
+                // found knot
+                if (key == data) {
 
-                parent = getParent(anchor);
-                boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
-                int numOfChildren = anchor.getNumOfChildren();
+                    parent = getParent(anchor);
+                    boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
+                    int numOfChildren = anchor.getNumOfChildren();
 
-                if (numOfChildren == 0) {
-                    if (isLeftChild) parent.setLeft(null);
-                    else parent.setRight(null);
+                    if (numOfChildren == 0) {
+                        if (isLeftChild) parent.setLeft(null);
+                        else parent.setRight(null);
+                    }
+
+                    else if (numOfChildren == 1) {
+                        if (isLeftChild) parent.setLeft(anchor.getLeft());
+                        else parent.setRight(anchor.getRight());
+                    }
+
+                    else if (numOfChildren == 2) {
+                        Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
+                        Knoten lowestParent = getParent(lowestKnot);
+
+                        if (isLeftChild) parent.setLeft(lowestKnot);
+                        else parent.setRight(lowestKnot);
+
+                        if (lowestParent != anchor) {
+                            lowestParent.setLeft(lowestKnot.getRight());
+                            lowestKnot.setRight(anchor.getRight());
+                        }
+                        lowestKnot.setLeft(anchor.getLeft());
+                    }
+
+                    anchor.setLeft(null);
+                    anchor.setRight(null);
+
+                    return;
                 }
-                else if (numOfChildren == 1) {
-                    if (isLeftChild) {
-                        parent.setLeft(anchor.getLeft());
-                    }
-                    else {
-                        parent.setRight(anchor.getRight());
-                    }
-                }
-                else if (numOfChildren == 2) {
-                    Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
-                    Knoten lowestParent = getParent(lowestKnot);
-                    if (isLeftChild) {
-                        parent.setLeft(lowestKnot);
-                    }
-                    else {
-                        parent.setRight(lowestKnot);
-                    }
-                    if (lowestParent != anchor) {
-                        lowestParent.setLeft(lowestKnot.getRight());
-                        lowestKnot.setRight(anchor.getRight());
-                    }
-                    lowestKnot.setLeft(anchor.getLeft());
-                }
-                anchor.setLeft(null);
-                anchor.setRight(null);
-                return;
-            }
 
-            // if knot not found
-            else if (key < data) {
-                anchor = anchor.getLeft();
-            }
-            else {
-                anchor = anchor.getRight();
+                // didn't find knot, keep parsing
+                else if (key < data) anchor = anchor.getLeft();
+                else anchor = anchor.getRight();
             }
         }
     }
-
-
 
     public void ausgebenPre() {
         if (wurzel != null) ausgebenPre(getWurzel());
