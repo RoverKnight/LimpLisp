@@ -158,12 +158,12 @@ public class BBaum {
         Knoten parent;
         Knoten anchor = wurzel;
 
-        // if is root
+        // if key is root
         if (key == wurzel.getInhalt()) {
             wurzel = null;
-            return;
         }
 
+        // if key is some other knot
         else {
             while (true) {
                 int data = anchor.getInhalt();
