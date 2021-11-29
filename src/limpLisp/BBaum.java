@@ -18,11 +18,6 @@ public class BBaum {
         return wurzel;
     }
 
-    /**
-     * @param knoten Der Knoten der angefuegt werden soll.
-     * @author goose
-     *
-     */
     public void addElementIteratively(Knoten knoten) {
 
         // fängt aufrufe ab bei denen gegebener knoten gleich null ist; verhindert NullPointerException
@@ -74,12 +69,25 @@ public class BBaum {
         }
     }
 
-    public void addElementRecursively(Knoten knoten, Knoten anker) { Knoten anchor = anker;
+    public void addElementRecursively(Knoten knoten) {
+        addElementRecursively(knoten, wurzel);
+    }
+
+    public void addElementRecursively(Knoten knoten, Knoten anchor) {
         if (wurzel == null) wurzel = knoten;
-        else { if (knoten.getInhalt() <= anchor.getInhalt()) { if (anchor.getLeft() == null) anchor.setLeft(knoten);
-                else { addElementRecursively(knoten, anker.getLeft());}}
-            else { if (anchor.getRight() == null) anchor.setRight(knoten);
-                else { addElementRecursively(knoten, anker.getRight()); }}}}
+        else {
+            if (knoten.getInhalt() <= anchor.getInhalt()) {
+                if (anchor.getLeft() == null) anchor.setLeft(knoten);
+                else { addElementRecursively(knoten, anchor.getLeft());
+                }
+            }
+            else {
+                if (anchor.getRight() == null) anchor.setRight(knoten);
+                else { addElementRecursively(knoten, anchor.getRight());
+                }
+            }
+        }
+    }
 
     public Knoten getParent(Knoten child) {
         if (child == null || child == wurzel || wurzel == null || wurzel.getNumOfChildren() == 0){
@@ -142,120 +150,100 @@ public class BBaum {
             }
         }
 
-        Knoten x = getLowestFromSubtree(anchor);
-        return x;
+        return getLowestFromSubtree(anchor);
     }
 
     public void deleteKnoten(int key) {
 
-        Knoten parent = null;
+        Knoten parent;
         Knoten anchor = wurzel;
 
-        while (true) {
-            int data = anchor.getInhalt();
+        // if key is root
+        if (key == wurzel.getInhalt()) {
+            wurzel = null;
+        }
 
-            if (key == data) {
-                System.out.println(key + " == " + data);
+        // if key is some other knot
+        else {
+            while (true) {
+                int data = anchor.getInhalt();
 
-                parent = getParent(anchor);
-                boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
-                int numOfChildren = anchor.getNumOfChildren();
+                // found knot
+                if (key == data) {
 
-                if (numOfChildren == 0) {
-                    if (isLeftChild) parent.setLeft(null);
-                    else parent.setRight(null);
+                    parent = getParent(anchor);
+                    boolean isLeftChild = parent.getLeft() == anchor; // yo that's cool
+                    int numOfChildren = anchor.getNumOfChildren();
+
+                    if (numOfChildren == 0) {
+                        if (isLeftChild) parent.setLeft(null);
+                        else parent.setRight(null);
+                    }
+
+                    else if (numOfChildren == 1) {
+                        if (isLeftChild) parent.setLeft(anchor.getLeft());
+                        else parent.setRight(anchor.getRight());
+                    }
+
+                    else if (numOfChildren == 2) {
+                        Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
+                        Knoten lowestParent = getParent(lowestKnot);
+
+                        if (isLeftChild) parent.setLeft(lowestKnot);
+                        else parent.setRight(lowestKnot);
+
+                        if (lowestParent != anchor) {
+                            lowestParent.setLeft(lowestKnot.getRight());
+                            lowestKnot.setRight(anchor.getRight());
+                        }
+                        lowestKnot.setLeft(anchor.getLeft());
+                    }
+
+                    anchor.setLeft(null);
+                    anchor.setRight(null);
+
+                    return;
                 }
-                else if (numOfChildren == 1) {
-                    if (isLeftChild) {
-                        parent.setLeft(anchor.getLeft());
-                    }
-                    else {
-                        parent.setRight(anchor.getRight());
-                    }
-                }
-                else if (numOfChildren == 2) {
-                    Knoten lowestKnot = getLowestFromSubtree(anchor.getRight());
-                    System.out.println("lowest from right sub: " + lowestKnot.getInhalt());
-                    if (isLeftChild) {
-                        System.out.println("is left c of " + parent.getInhalt());
-                        parent.setLeft(lowestKnot);
-                        System.out.println("p.-ref: " + parent.getLeft().getInhalt());
-                    }
-                    else {
-                        System.out.println("is right c");
-                        parent.setRight(lowestKnot);
-                    }
-                    Knoten lowestParent = getParent(lowestKnot);
-                    if (lowestParent.getLeft() == lowestKnot) lowestParent.setLeft(null);
-                    else lowestParent.setRight(null);
-                    lowestKnot.setLeft(anchor.getLeft());
-                    lowestKnot.setRight(anchor.getRight());
-                }
-                anchor.setLeft(null);
-                anchor.setRight(null);
-                return;
-            }
 
-            // if knot not found
-            else if (key < data) {
-                anchor = anchor.getLeft();
-            }
-            else {
-                anchor = anchor.getRight();
+                // didn't find knot, keep parsing
+                else if (key < data) anchor = anchor.getLeft();
+                else anchor = anchor.getRight();
             }
         }
     }
 
-
-
     public void ausgebenPre() {
-        ausgebenPre(getWurzel());
-    }
+        if (wurzel != null) ausgebenPre(getWurzel());
+        else System.out.println("Tree is empty");    }
 
     public void ausgebenPost() {
-        ausgebenPost(getWurzel());
-    }
+        if (wurzel != null) ausgebenPost(getWurzel());
+        else System.out.println("Tree is empty");    }
 
     public void ausgebenIn() {
-        ausgebenIn(getWurzel());
+        if (wurzel != null) ausgebenIn(getWurzel());
+        else System.out.println("Tree is empty");
     }
 
     private void ausgebenPre(Knoten knoten) {
         System.out.println(knoten.getInhalt());
-        try {
-            ausgebenPre(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
-        try {
-            ausgebenPre(knoten.getRight());
-        } catch (NullPointerException ignored) {}
+        if (knoten.getLeft() != null)  ausgebenPre(knoten.getLeft());
+        if (knoten.getRight() != null) ausgebenPre(knoten.getRight());
     }
 
     private void ausgebenPost(Knoten knoten) {
-        try {
-            ausgebenPost(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
-        try {
-            ausgebenPost(knoten.getRight());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getLeft() != null)  ausgebenPost(knoten.getLeft());
+        if (knoten.getRight() != null) ausgebenPost(knoten.getRight());
         System.out.println(knoten.getInhalt());
     }
 
     private void ausgebenIn(Knoten knoten) {
-        try {
-            ausgebenIn(knoten.getLeft());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getLeft() != null)  ausgebenIn(knoten.getLeft());
         System.out.println(knoten.getInhalt());
-
-        try {
-            ausgebenIn(knoten.getRight());
-        } catch (NullPointerException ignored) {}
-
+        if (knoten.getRight() != null) ausgebenIn(knoten.getRight());
     }
 
+    /*
     public Knoten getByPfad(boolean[] directions) {
         return null;
     }
@@ -283,10 +271,5 @@ public class BBaum {
     public void clear() {
         wurzel = null;
     }
-
-
-
-
-
-
+    */
 }
