@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 public class ListeTest {
 
     private Liste liste = new Liste();
-    private FlatElement[] elements = {
-            new FlatElement("0"),
-            new FlatElement("1"),
-            new FlatElement("2"),
-            new FlatElement("3"),
+    private Element[] elements = {
+            new Element("0"),
+            new Element("1"),
+            new Element("2"),
+            new Element("3"),
     };
 
     public void prepareInOrder() {
-        for (FlatElement element : elements) {
+        for (Element element : elements) {
             liste.hintenAnfuegen(element);
         }
     }
@@ -24,7 +24,7 @@ public class ListeTest {
     @Test
     public void addToFront() {
         // add each to front
-        for (FlatElement element : elements) {
+        for (Element element : elements) {
             liste.vorneAnfuegen(element);
         }
 
@@ -40,7 +40,7 @@ public class ListeTest {
     public void delete() {
         prepareInOrder();
         liste.vorneLoeschen();
-        liste.loeschen(3);
+        liste.loeschen(2);
         try {
             liste.ausgeben();
         } catch (Exception e) {

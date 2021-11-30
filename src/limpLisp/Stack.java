@@ -8,24 +8,24 @@ package limpLisp;
  */
 public class Stack{
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private FlatElement start;
+    private Element start;
     
     public Stack(){
         start = null;
     }
     
-    public void push(FlatElement e){
+    public void push(Element e){
         e.setNaechstes(start);
         start = e;
     }
     
-    public FlatElement pop(){
-        FlatElement e = start;
+    public Element pop(){
+        Element e = start;
         start = start.getNaechstes();
         return e;
     }
     
-    public FlatElement top(){
+    public Element top(){
         return start;
     }
     
