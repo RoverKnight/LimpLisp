@@ -9,11 +9,11 @@ public class StackTest {
 
     @Test
     public void test() {
-        FlatElement[] elements = {
-                new FlatElement("e0"),
-                new FlatElement("e1"),
-                new FlatElement("e2"),
-                new FlatElement("e3"),
+        Element[] elements = {
+                new Element("e0"),
+                new Element("e1"),
+                new Element("e2"),
+                new Element("e3"),
         };
         Stack stack = new Stack();
 
@@ -28,7 +28,7 @@ public class StackTest {
         // empty stack
         int n = 3;
         for (int i = 0; i < 4; i++) {
-            FlatElement e = stack.pop();
+            Element e = stack.pop();
             assert e == elements[n];
             n--;
             if (stack.top() != null) {

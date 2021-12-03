@@ -28,7 +28,7 @@ public class RPNCalculator {
             // if data is integer, add to stack
             try {
                 int num = Integer.parseInt(data);
-                stack.push(new FlatElement("" + num));
+                stack.push(new Element("" + num));
             }
 
             // catch executes if String given is an operator; calculates
@@ -54,7 +54,7 @@ public class RPNCalculator {
                 }
 
                 // push result to stack
-                stack.push(new FlatElement("" + result));
+                stack.push(new Element("" + result));
             }
         }
 

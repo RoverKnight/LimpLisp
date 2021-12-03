@@ -11,15 +11,15 @@ public class ListenTest{
     public static void main(String[] args) throws Exception {
     
     // Ein paar Elemente und Listen erzeugen    
-    FlatElement e1 = new FlatElement("eins");
-    FlatElement e2 = new FlatElement("zwei");
-    FlatElement e3 = new FlatElement("drei");
-    FlatElement e4 = new FlatElement("vier");
-    FlatElement e5 = new FlatElement("fünf");
-    FlatElement e6 = new FlatElement("sechs");
-    FlatElement e7 = new FlatElement("sieben");
-    FlatElement e0 = new FlatElement("null");
-    FlatElement e00 = new FlatElement("000");
+    Element e1 = new Element("eins");
+    Element e2 = new Element("zwei");
+    Element e3 = new Element("drei");
+    Element e4 = new Element("vier");
+    Element e5 = new Element("fünf");
+    Element e6 = new Element("sechs");
+    Element e7 = new Element("sieben");
+    Element e0 = new Element("null");
+    Element e00 = new Element("000");
     Liste l1 = new Liste();
     Liste l2 = new Liste();
     
@@ -33,11 +33,11 @@ public class ListenTest{
     System.out.println("Rush B");
     l1.ausgeben(); // Lsg: "000", "eins", "zwei", "drei"
     System.out.println("Rush C");
-    System.out.println("Letztes limpLisp.FlatElement: "+ l1.getLetztes().getDaten());
+    System.out.println("Letztes limpLisp.Element: "+ l1.getLetztes().getDaten());
     l1.vorneLoeschen();
     l1.vorneAnfuegen(e0);
     l1.ausgeben(); // Lsg: "null", "eins", "zwei", "drei"
-    System.out.println("limpLisp.FlatElement an Position 2: " + l1.getAnPosition(2).getDaten());
+    System.out.println("limpLisp.Element an Position 2: " + l1.getAnPosition(2).getDaten());
     
     l2.vorneAnfuegen(e6);
     l2.einfuegen(e5,1);

@@ -2,7 +2,7 @@ package limpLisp;
 
 public class Queue {
 
-    private FlatElement anfang = null;
+    private Element anfang = null;
     private int laenge = 0;
 
     public Queue() {
@@ -14,10 +14,10 @@ public class Queue {
         return anfang == null;
     }
 
-    public void enter(FlatElement newElement) {
+    public void enter(Element newElement) {
         if (anfang == null) anfang = newElement;
         else {
-            FlatElement currentElement = anfang;
+            Element currentElement = anfang;
             while (currentElement.getNaechstes() != null) {
                 currentElement = currentElement.getNaechstes();
             }
@@ -26,13 +26,13 @@ public class Queue {
         }
     }
 
-    public FlatElement getFront() {
+    public Element getFront() {
         return anfang;
     }
 
-    public FlatElement remove() {
+    public Element remove() {
         if (anfang == null) return null;
-        FlatElement removedElement = anfang;
+        Element removedElement = anfang;
         anfang = anfang.getNaechstes();
         laenge--;
         return removedElement;

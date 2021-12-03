@@ -2,7 +2,7 @@ package limpLisp;
 
 public class Liste {
 
-    private FlatElement anfang;
+    private Element anfang;
     private int laenge;
 
     public Liste() {
@@ -14,20 +14,20 @@ public class Liste {
         loeschen(0);
     }
 
-    public void hintenAnfuegen(FlatElement neuesElement) {
+    public void hintenAnfuegen(Element neuesElement) {
         if (laenge == 0) anfang = neuesElement;
         else getLetztes().setNaechstes(neuesElement);
         laenge++;
     }
 
     // changed einfuegen to anfuegen cuz hintenAnfuegen also exists
-    public void vorneAnfuegen(FlatElement neuesElement) {
+    public void vorneAnfuegen(Element neuesElement) {
         neuesElement.setNaechstes(anfang);
         anfang = neuesElement;
         laenge++;
     }
 
-    public void einfuegen(FlatElement neuesElement, int position) {
+    public void einfuegen(Element neuesElement, int position) {
         if (position == 0) {
             vorneAnfuegen(neuesElement);
         }
@@ -64,16 +64,16 @@ public class Liste {
     }
 
     // i refuse to call a get-method gib
-    public FlatElement getLetztes() {
-        FlatElement element = anfang;
+    public Element getLetztes() {
+        Element element = anfang;
         while (element.getNaechstes() != null) {
             element = element.getNaechstes();
         }
         return element;
     }
 
-    public FlatElement getAnPosition(int position) {
-        FlatElement element = anfang;
+    public Element getAnPosition(int position) {
+        Element element = anfang;
         while (position > 0) {
             element = element.getNaechstes();
             position--;
@@ -82,10 +82,10 @@ public class Liste {
     }
 
     public void ausgeben() throws Exception {
-        FlatElement element = anfang;
+        Element element = anfang;
         while (element != null) {
             System.out.println(element.getDaten());
-            if (element.getNaechstes() == element) throw new Exception("limpLisp.FlatElement refers to self");
+            if (element.getNaechstes() == element) throw new Exception("limpLisp.Element refers to self");
             element = element.getNaechstes();
         }
     }
@@ -94,7 +94,7 @@ public class Liste {
         return laenge;
     }
 
-    public FlatElement getAnfang() {
+    public Element getAnfang() {
         return anfang;
     }
 
