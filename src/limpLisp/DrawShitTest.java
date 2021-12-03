@@ -77,6 +77,14 @@ public class DrawShitTest {
 
     }
 
+    @Test
+    public void kochCurve() {
+        DrawShit.turtle.toStartingPoint(0, 670);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        DrawShit.drawKochCurve(1500, 7);
+    }
+
     @AfterEach
     public void waitForTermination() {
         System.out.println("To terminate, press enter in console");

@@ -132,6 +132,19 @@ public class DrawShit {
         }
     }
 
+    public static void drawKochCurve(float length, int depth) {
+        if (depth == 0) turtle.move(length);
+        else {
+            drawKochCurve(length / 3, depth -1);
+            turtle.turn(-60);
+            drawKochCurve(length / 3, depth -1);
+            turtle.turn(120);
+            drawKochCurve(length / 3, depth -1);
+            turtle.turn(-60);
+            drawKochCurve(length / 3, depth - 1);
+        }
+    }
+
     //public static void incept
 
 }

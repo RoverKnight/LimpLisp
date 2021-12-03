@@ -36,8 +36,8 @@ public class Turtle extends JFrame implements ActionListener {
     final int maxHeight;
     static int tNumber;
     static int barHeight = 20;
-    static int currentWidth = 460;
-    static int currentHeight = 460;
+    static int currentWidth = 1500;
+    static int currentHeight = 670;
     static boolean firstCall = true;
     static final Vector<Turtle> tList = new Vector();
     static JFrame jFrame;
