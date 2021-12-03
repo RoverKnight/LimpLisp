@@ -85,6 +85,14 @@ public class DrawShitTest {
         DrawShit.drawKochCurve(1500, 7);
     }
 
+    @Test
+    public void squareCook() {
+        DrawShit.turtle.toStartingPoint(500, 300);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        DrawShit.drawSquareCook(100, 2);
+    }
+
     @AfterEach
     public void waitForTermination() {
         System.out.println("To terminate, press enter in console");

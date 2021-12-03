@@ -144,6 +144,25 @@ public class DrawShit {
             drawKochCurve(length / 3, depth - 1);
         }
     }
+    public static void drawSquareCook(float length, int depth) {
+        if (depth == 0) {
+            for (int i = 0; i < 4; i++) {
+                turtle.move(length);
+                turtle.turn(90);
+            }
+        }
+        else {
+            drawSquareCook(length / 3, depth -1);
+            turtle.turn(-90);
+            drawSquareCook(length / 3, depth -1);
+            turtle.turn(90);
+            drawSquareCook(length / 3, depth -1);
+            turtle.turn(90);
+            drawSquareCook(length / 3, depth - 1);
+            turtle.turn(-90);
+            drawSquareCook(length / 3, depth -1);
+        }
+    }
 
     //public static void incept
 
