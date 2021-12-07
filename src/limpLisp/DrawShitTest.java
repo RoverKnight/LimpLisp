@@ -1,8 +1,10 @@
 package limpLisp;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class DrawShitTest {
@@ -86,17 +88,31 @@ public class DrawShitTest {
     }
 
     @Test
-    public void squareCook() {
-        DrawShit.turtle.toStartingPoint(500, 300);
+    public void lul() {
+        DrawShit.turtle.toStartingPoint(300, 500);
         DrawShit.turtle.setVisible(true);
         DrawShit.turtle.penDown();
-        DrawShit.drawSquareCook(100, 2);
+        DrawShit.lul(150, 3);
+    }
+
+    @Test
+    public void squareCook() {
+        DrawShit.turtle.toStartingPoint(300, 500);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        DrawShit.drawSquareCook(500, 5);
+    }
+
+    @Test
+    public void triangleCook() {
+        DrawShit.turtle.toStartingPoint(100, 150);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        DrawShit.drawTriangleCook(400, 5); // 400/5 -> skew
     }
 
     @AfterEach
-    public void waitForTermination() {
-        System.out.println("To terminate, press enter in console");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+    public void waitForExit() {
+        while (true) {}
     }
 }

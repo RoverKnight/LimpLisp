@@ -344,21 +344,10 @@ public class Turtle extends JFrame implements ActionListener {
         currentWidth = b;
         currentHeight = h;
         jFrame = this;
-        jFrame.setTitle("Turtle version 6a (c) Alfred Hermes");
-        menueBar = new JMenuBar();
-        jFrame.setJMenuBar(menueBar);
-        eraseButton = new JButton("Fenster leeren");
-        menueBar.add(eraseButton);
-        eraseButton.addActionListener(this);
-        restoreButton = new JButton("Fenster herstellen");
-        menueBar.add(restoreButton);
-        restoreButton.addActionListener(this);
-        closeButton = new JButton("Fenster schließen");
-        menueBar.add(closeButton);
-        closeButton.addActionListener(this);
+        jFrame.setTitle("Turtle go brrrrrr");
         jFrame.setSize(currentWidth, currentHeight);
         jFrame.setVisible(true);
-        jFrame.setDefaultCloseOperation(0);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void paint(Graphics gr) {

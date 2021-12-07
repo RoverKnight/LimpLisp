@@ -144,25 +144,82 @@ public class DrawShit {
             drawKochCurve(length / 3, depth - 1);
         }
     }
+
+    public static void lul(float length, int depth) {
+        for (int i = 0; i < 4; i++) {
+            if (depth == 0) {
+                for (int n = 0; n < 4; n++) {
+                    turtle.move(length);
+                    turtle.turn(90);
+                }
+                turtle.move(length);
+            }
+            else {
+                drawSquareCook(length / 3, depth -1);
+                turtle.turn(-90);
+                drawSquareCook(length / 3, depth -1);
+                turtle.turn(90);
+                drawSquareCook(length / 3, depth -1);
+                turtle.turn(90);
+                drawSquareCook(length / 3, depth - 1);
+                turtle.turn(-90);
+                drawSquareCook(length / 3, depth -1);
+            }
+        }
+        turtle.turn(90);
+        turtle.move(length);
+    }
+
     public static void drawSquareCook(float length, int depth) {
+        for (int i = 0; i < 4; i++) {
+            drawSquareCook(length, depth, true);
+            turtle.turn(-90);
+        }
+    }
+
+    private static void drawSquareCook(float length, int depth, boolean obsoleteParameter) {
         if (depth == 0) {
-            for (int i = 0; i < 4; i++) {
+            for (int n = 0; n < 4; n++) {
                 turtle.move(length);
                 turtle.turn(90);
             }
+            turtle.move(length);
         }
         else {
-            drawSquareCook(length / 3, depth -1);
+            drawSquareCook(length / 3, depth -1, true);
             turtle.turn(-90);
-            drawSquareCook(length / 3, depth -1);
+            drawSquareCook(length / 3, depth -1, true);
             turtle.turn(90);
-            drawSquareCook(length / 3, depth -1);
+            drawSquareCook(length / 3, depth -1, true);
             turtle.turn(90);
-            drawSquareCook(length / 3, depth - 1);
+            drawSquareCook(length / 3, depth -1, true);
             turtle.turn(-90);
-            drawSquareCook(length / 3, depth -1);
+            drawSquareCook(length / 3, depth -1, true);
         }
     }
+
+    public static void drawTriangleCook(float length, int depth) {
+        for (int i = 0; i < 3; i++) {
+            drawTriangleCook(length, depth, true);
+            turtle.turn(120);
+        }
+    }
+
+    private static void drawTriangleCook(float length, int depth, boolean obsoleteParameter) {
+        if (depth == 0) {
+            turtle.move(length);
+        }
+        else {
+            drawTriangleCook(length / 3, depth -1, true);
+            turtle.turn(-60);
+            drawTriangleCook(length / 3, depth -1, true);
+            turtle.turn(120);
+            drawTriangleCook(length / 3, depth -1, true);
+            turtle.turn(-60);
+            drawTriangleCook(length / 3, depth -1, true);
+        }
+    }
+
 
     //public static void incept
 
