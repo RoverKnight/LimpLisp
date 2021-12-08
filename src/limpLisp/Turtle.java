@@ -345,7 +345,8 @@ public class Turtle extends JFrame implements ActionListener {
         currentHeight = h;
         jFrame = this;
         jFrame.setTitle("Turtle go brrrrrr");
-        jFrame.setSize(currentWidth, currentHeight);
+        jFrame.setSize(800, 900);
+        jFrame.setLocation(800, 0);
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

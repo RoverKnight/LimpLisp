@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class DrawShitTest {
 
+    Turtle t = DrawShit.turtle;
+
     public DrawShitTest() {
 
     }
@@ -108,7 +110,17 @@ public class DrawShitTest {
         DrawShit.turtle.toStartingPoint(100, 150);
         DrawShit.turtle.setVisible(true);
         DrawShit.turtle.penDown();
-        DrawShit.drawTriangleCook(400, 5); // 400/5 -> skew
+        DrawShit.drawTriangleCook(500, 5); // 400/5 -> skew
+    }
+
+    @Test
+    public void drawPythagorianTree() {
+        DrawShit.turtle.toStartingPoint(500, 500);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        DrawShit.turtle.turn(-90);
+        DrawShit.explodeColor();
+        DrawShit.drawPythagorianTree(50, 3, 500, 500, t.getDirection());
     }
 
     @AfterEach

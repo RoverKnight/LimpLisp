@@ -11,11 +11,26 @@ public class DrawShit {
         turtle.showTurtle();
     }
 
+    public static void move(double length) {
+        turtle.move(length);
+    }
+
+    public static void turn(double angle) {
+        turtle.turn(angle);
+    }
+
     public static void drawSquare(int length, int x, int y) {
         goTo(x, y);
         for (int i = 0; i < 4; i++) {
             turtle.move(length);
             turtle.turn(90);
+        }
+    }
+
+    public static void drawSquare(double length) {
+        for (int i = 0; i < 4; i++) {
+            move((int) length);
+            turn(90);
         }
     }
 
@@ -106,8 +121,8 @@ public class DrawShit {
             if (i % 3 == 0) turtle.setColor(4);
             else if (i % 3 == 1) turtle.setColor(1);
             else if (i % 3 == 2) turtle.setColor(2);
-            turtle.move(150);
-            turtle.move(-150);
+            turtle.move(10);
+            turtle.move(-10);
             turtle.turn(-3);
         }
     }
@@ -219,6 +234,36 @@ public class DrawShit {
             drawTriangleCook(length / 3, depth -1, true);
         }
     }
+
+    public static void drawPythagorianTree(double squareSize, int depth, int x, int y, double angle) {
+        if (depth == 0) {
+            drawSquare(squareSize);
+            turn(90);
+            move(squareSize);
+        }
+        else {
+            drawSquare(squareSize);
+            move(squareSize);
+            turn(-45);
+            drawPythagorianTree(squareSize / Math.sqrt(2), depth - 1, turtle.getX(), turtle.getY(), turtle.getDirection());
+
+            turtle.toStartingPoint(x, y);
+            turtle.setDirection(angle);
+            move(squareSize);
+            turn(45);
+            move(squareSize / Math.sqrt(2));
+            drawPythagorianTree(squareSize / Math.sqrt(2), depth - 1, turtle.getX(), turtle.getY(), turtle.getDirection());
+        }
+
+    }
+
+    /*
+    private static void drawPythagorianTree() {
+
+
+
+    }
+    */
 
 
     //public static void incept
