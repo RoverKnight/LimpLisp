@@ -1,11 +1,7 @@
 package limpLisp;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
-import java.util.Scanner;
 
 public class DrawShitTest {
 
@@ -114,24 +110,13 @@ public class DrawShitTest {
     }
 
     @Test
-    public void drawPythagorianTree() {
+    public void drawPythagoreanTree() {
         DrawShit.turtle.toStartingPoint(500, 800);
         DrawShit.turtle.setVisible(true);
         DrawShit.turtle.penDown();
         DrawShit.turtle.turn(-90);
         DrawShit.explodeColor();
-        DrawShit.drawPythagorianTree(100, 14);
-    }
-
-    @Test
-    public void xyTest() {
-        DrawShit.turtle.toStartingPoint(500, 500);
-        DrawShit.turtle.setVisible(true);
-        DrawShit.turtle.penDown();
-        for (int i = 0; i < 6; i++) {
-            move(50 * i);
-            turn(90);
-        }
+        DrawShit.drawPythagoreanTree(100, 14);
     }
 
     @AfterEach

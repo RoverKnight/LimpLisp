@@ -220,11 +220,11 @@ public class DrawShit {
         }
     }
 
-    public static void drawPythagorianTree(double squareSize, int depth) {
-        drawPythagorianTree(squareSize, depth, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
+    public static void drawPythagoreanTree(double squareSize, int depth) {
+        drawPythagoreanTree(squareSize, depth, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
     }
 
-    private static void drawPythagorianTree(double squareSize, int depth, double x, double y, double angle) {
+    private static void drawPythagoreanTree(double squareSize, int depth, double x, double y, double angle) {
 
         double gkLength = squareSize - (0.4 * squareSize); // GK for left; right length
         double akLength = squareSize - (0.2 * squareSize); // AK for left; left length
@@ -241,14 +241,14 @@ public class DrawShit {
             drawSquare(squareSize);
             move(squareSize);
             turn(0 - angle1); // hard: -45
-            drawPythagorianTree(akLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
+            drawPythagoreanTree(akLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
 
             turtle.toStartingPoint(x, y);
             turtle.setDirection(angle);
             move(squareSize);
             turn(angle2);
             move(akLength);
-            drawPythagorianTree(gkLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
+            drawPythagoreanTree(gkLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
         }
 
     }
