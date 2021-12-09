@@ -215,27 +215,23 @@ public class DrawShit {
 
     public static void drawTriangleCook(float length, int depth) {
         for (int i = 0; i < 3; i++) {
-            drawTriangleCook(length, depth, true);
+            drawKochCurve(length, depth);
             turtle.turn(120);
         }
     }
 
-    private static void drawTriangleCook(float length, int depth, boolean obsoleteParameter) {
-        if (depth == 0) {
-            turtle.move(length);
-        }
-        else {
-            drawTriangleCook(length / 3, depth -1, true);
-            turtle.turn(-60);
-            drawTriangleCook(length / 3, depth -1, true);
-            turtle.turn(120);
-            drawTriangleCook(length / 3, depth -1, true);
-            turtle.turn(-60);
-            drawTriangleCook(length / 3, depth -1, true);
-        }
+    public static void drawPythagorianTree(double squareSize, int depth) {
+        drawPythagorianTree(squareSize, depth, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
     }
 
-    public static void drawPythagorianTree(double squareSize, int depth, int x, int y, double angle) {
+    private static void drawPythagorianTree(double squareSize, int depth, double x, double y, double angle) {
+
+        double gkLength = squareSize - (0.4 * squareSize); // GK for left; right length
+        double akLength = squareSize - (0.2 * squareSize); // AK for left; left length
+
+        double angle1 = Math.toDegrees(calculateAngle(squareSize, akLength, gkLength)); // left angle
+        double angle2 = Math.toDegrees(calculateAngle(squareSize, gkLength, akLength)); // right angle
+
         if (depth == 0) {
             drawSquare(squareSize);
             turn(90);
@@ -244,17 +240,21 @@ public class DrawShit {
         else {
             drawSquare(squareSize);
             move(squareSize);
-            turn(-45);
-            drawPythagorianTree(squareSize / Math.sqrt(2), depth - 1, turtle.getX(), turtle.getY(), turtle.getDirection());
+            turn(0 - angle1); // hard: -45
+            drawPythagorianTree(akLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
 
             turtle.toStartingPoint(x, y);
             turtle.setDirection(angle);
             move(squareSize);
-            turn(45);
-            move(squareSize / Math.sqrt(2));
-            drawPythagorianTree(squareSize / Math.sqrt(2), depth - 1, turtle.getX(), turtle.getY(), turtle.getDirection());
+            turn(angle2);
+            move(akLength);
+            drawPythagorianTree(gkLength, depth - 1, turtle.getXPos(), turtle.getYPos(), turtle.getDirection());
         }
 
+    }
+
+    private static double calculateAngle(double h, double gk, double ak) {
+        return Math.acos((Math.pow(h, 2) + Math.pow(gk, 2) - Math.pow(ak, 2)) / (2 * h * gk));
     }
 
     /*

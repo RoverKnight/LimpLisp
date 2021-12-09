@@ -345,8 +345,19 @@ public class Turtle extends JFrame implements ActionListener {
         currentHeight = h;
         jFrame = this;
         jFrame.setTitle("Turtle go brrrrrr");
-        jFrame.setSize(800, 900);
-        jFrame.setLocation(800, 0);
+        String operatingSystem = System.getProperty("os.name");
+        if (operatingSystem.contains("Linux")) {
+            jFrame.setSize(800, 900);
+            jFrame.setLocation(800, 0);
+        }
+        else if (operatingSystem.contains("Windows")) {
+            jFrame.setSize(960, 1080);
+            jFrame.setLocation(960, 0);
+        }
+        else {
+            jFrame.setSize(500, 500);
+            jFrame.setLocation(250, 250);
+        }
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

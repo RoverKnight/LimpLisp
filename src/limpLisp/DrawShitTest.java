@@ -115,16 +115,35 @@ public class DrawShitTest {
 
     @Test
     public void drawPythagorianTree() {
-        DrawShit.turtle.toStartingPoint(500, 500);
+        DrawShit.turtle.toStartingPoint(500, 800);
         DrawShit.turtle.setVisible(true);
         DrawShit.turtle.penDown();
         DrawShit.turtle.turn(-90);
         DrawShit.explodeColor();
-        DrawShit.drawPythagorianTree(50, 3, 500, 500, t.getDirection());
+        DrawShit.drawPythagorianTree(100, 14);
+    }
+
+    @Test
+    public void xyTest() {
+        DrawShit.turtle.toStartingPoint(500, 500);
+        DrawShit.turtle.setVisible(true);
+        DrawShit.turtle.penDown();
+        for (int i = 0; i < 6; i++) {
+            move(50 * i);
+            turn(90);
+        }
     }
 
     @AfterEach
     public void waitForExit() {
         while (true) {}
+    }
+
+    public void move(double distance) {
+        DrawShit.turtle.move(distance);
+    }
+
+    public void turn(double angle) {
+        DrawShit.turtle.turn(angle);
     }
 }
