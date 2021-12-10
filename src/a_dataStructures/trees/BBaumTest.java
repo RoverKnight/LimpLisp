@@ -25,9 +25,6 @@ public class BBaumTest {
                 new Knoten(33)
         };
         tree = new BBaum();
-        for (Knoten knoten : knotenArray) {
-            tree.addElementIteratively(knoten);
-        }
     }
 
     public void reset() {
@@ -36,6 +33,7 @@ public class BBaumTest {
 
     @Test
     public void printTest() {
+        iterativeAddTest();
         Knoten a = new Knoten(30);
         Knoten b = new Knoten(15);
         Knoten c = new Knoten(36);
@@ -75,6 +73,7 @@ public class BBaumTest {
 
     @Test
     public void iterativeAddTest() {
+        reset();
         for (Knoten knoten : knotenArray) {
             tree.addElementIteratively(knoten);
         }
@@ -91,6 +90,7 @@ public class BBaumTest {
 
     @Test
     public void recursiveAddTest() {
+        reset();
         for (Knoten knoten : knotenArray) {
             tree.addElementRecursively(knoten);
         }
@@ -107,7 +107,7 @@ public class BBaumTest {
 
     @Test
     public void getParentTest() {
-
+        iterativeAddTest();
         for (Knoten knoten : knotenArray) {
             try {
                 System.out.println("c: " + knoten.getInhalt() + "   p: " + tree.getParent(knoten).getInhalt());
