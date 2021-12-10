@@ -15,6 +15,13 @@ public class MathsssTest {
     }
 
     @Test
+    public void killMyBatteryPlease() {
+        while (true) {
+            fibonacciFunctionalityTest();
+        }
+    }
+
+    @Test
     public void fibonacciFunctionalityTest() {
         System.out.println("I:");
         for (int i = 0; i < 45; i++) {
