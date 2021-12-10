@@ -1,4 +1,4 @@
-package limpLisp;
+package a_dataStructures.linkedLists;
 
 import java.util.Scanner;
 

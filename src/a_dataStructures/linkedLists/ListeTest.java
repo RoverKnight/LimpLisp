@@ -1,4 +1,4 @@
-package limpLisp;
+package a_dataStructures.linkedLists;
 
 import org.junit.jupiter.api.Test;
 

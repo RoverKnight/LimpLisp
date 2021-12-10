@@ -1,4 +1,4 @@
-package recursion.maths;
+package b_recursion.maths;
 
 import org.junit.jupiter.api.Test;
 

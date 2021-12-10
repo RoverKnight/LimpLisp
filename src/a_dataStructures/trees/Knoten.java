@@ -1,4 +1,4 @@
-package limpLisp;
+package a_dataStructures.trees;
 
 public class Knoten {
 

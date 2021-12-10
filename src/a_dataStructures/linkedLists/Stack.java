@@ -1,4 +1,4 @@
-package limpLisp;
+package a_dataStructures.linkedLists;
 
 /**
  * Beschreiben Sie hier die Klasse limpLisp.Stack.
