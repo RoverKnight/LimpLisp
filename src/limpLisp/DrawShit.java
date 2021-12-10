@@ -245,6 +245,7 @@ public class DrawShit {
 
             turtle.toStartingPoint(x, y);
             turtle.setDirection(angle);
+
             move(squareSize);
             turn(angle2);
             move(akLength);
