@@ -26,27 +26,34 @@ public class Mathsss {
     }
 
     public static double fibonacciI(int index) {
+        // return -1 if invalid index given to indicate error
         if (index < 0) {
             System.out.println(":|");
             return -1;
         }
+
+        // 0-case handled separately since num can't be initialized with 0
         else if (index == 0) return 0;
 
+        // actual calculation
         double num = 1;
         double oldNum = 0;
         for (int i = 1; i < index; i++) {
-            num += oldNum;
-            oldNum = num - oldNum;
+            num += oldNum;          // new num is always current + old num
+            oldNum = num - oldNum;  // assigns previous num value to oldNum
         }
 
         return num;
     }
 
     public static double fibonacciR(int index) {
+        // return -1 if invalid index given to indicate error
         if (index < 0) {
             System.out.println(":|");
             return -1;
         }
+
+        // 0-/1-cases handled separately since recursive method call would push index below 0
         else if (index == 0) return 0;
         else if (index == 1) return 1;
 
