@@ -30,18 +30,26 @@ public class MathsssTest {
     @Test
     public void fibonacciTimedTest() {
         int[] timeStamps = { 5, 25, 30, 31, 33, 35, 40, 45 };
-        for (int i = 0; i < timeStamps.length; i++) {
-            System.out.println("index = " + timeStamps[i] + ":");
-            long startTime = System.currentTimeMillis();
-            Mathsss.fibonacciI(timeStamps[i]);
-            long endTime = System.currentTimeMillis();
-            long timeTaken = endTime - startTime;
+        long startTime;
+        long endTime;
+        long timeTaken;
+
+        // test each timestamp
+        for (int timeStamp : timeStamps) {
+            System.out.println("index = " + timeStamp + ":");
+
+            // iterative
+            startTime = System.nanoTime();
+            Mathsss.fibonacciI(timeStamp);
+            endTime = System.nanoTime();
+            timeTaken = (endTime - startTime) / 1000000;
             System.out.println("  I - " + timeTaken + "ms");
 
-            startTime = System.currentTimeMillis();
-            Mathsss.fibonacciR(timeStamps[i]);
-            endTime = System.currentTimeMillis();
-            timeTaken = endTime - startTime;
+            // recursive
+            startTime = System.nanoTime();
+            Mathsss.fibonacciR(timeStamp);
+            endTime = System.nanoTime();
+            timeTaken = (endTime - startTime) / 1000000;
             System.out.println("  R - " + timeTaken + "ms");
         }
     }
