@@ -12,7 +12,7 @@ public class MathsssTest {
 
     @Test
     public void facultyTest() {
-        int num = 20;
+        int num = 55;
         System.out.println(num + "! = " + Mathsss.facultyRecursive(num));
 
         System.out.println(num + "! = " + Mathsss.facultyIterative(num));
