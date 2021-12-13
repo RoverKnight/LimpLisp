@@ -24,12 +24,12 @@ public class MathsssTest {
     @Test
     public void fibonacciFunctionalityTest() {
         System.out.println("I:");
-        for (int i = 0; i < 45; i++) {
+        for (int i = 0; i < 46; i++) {
             System.out.println("  #" + i + " - " + Mathsss.fibonacciI(i));
         }
 
         System.out.println("R:");
-        for (int i = 0; i < 45; i++) {
+        for (int i = 0; i < 46; i++) {
             System.out.println("  #" + i + " - " + Mathsss.fibonacciR(i));
         }
     }

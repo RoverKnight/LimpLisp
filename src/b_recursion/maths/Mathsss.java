@@ -54,8 +54,10 @@ public class Mathsss {
         }
 
         // 0-/1-cases handled separately since recursive method call would push index below 0
-        else if (index == 0) return 0;
-        else if (index == 1) return 1;
+        else if (index == 0 || index == 1) return index;
+
+        // friendly warning message cuz it gets slow af
+        else if (index > 45) System.out.println("This may take a while...");
 
         return fibonacciR(index - 1) + fibonacciR(index - 2);
     }
