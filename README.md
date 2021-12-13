@@ -3,7 +3,7 @@ Welcome to LimpLisp :v
 
 What dis?
 ---------
-This is the repository I use for my programming class assignments. It's more of a garbage patch than an organized effort, as most things aren't really sorted in any way. Well, at least that's the case for the actually coded stuff.
+This is the repository I use for my programming class assignments. It's more of a garbage patch than an organized effort, but hey, it works (on my machine).
 
 What's in it for me?
 --------------------
