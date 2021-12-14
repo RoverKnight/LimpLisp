@@ -82,7 +82,7 @@ public class DrawShitTest {
         DrawShit.turtle.toStartingPoint(0, 670);
         DrawShit.turtle.setVisible(true);
         DrawShit.turtle.penDown();
-        DrawShit.drawKochCurve(1500, 7);
+        DrawShit.drawKochCurve(500, 4);
     }
 
     @Test

@@ -34,10 +34,10 @@ public class towersOfHanoi extends JFrame {
         cp.setLayout(null);
 
         // Anfang Komponenten
-        jTextField1.setBounds(32, 24, 121, 24);
+        jTextField1.setBounds(32, 24, 120, 24);
         jTextField1.setText("");
         cp.add(jTextField1);
-        jButton1.setBounds(32, 56, 123, 25);
+        jButton1.setBounds(32, 56, 120, 25);
         jButton1.setText("Hanoi!");
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -69,8 +69,18 @@ public class towersOfHanoi extends JFrame {
      */
     public void hanoi(int numOfPlates, int t1, int t2, int t3) {
 
+        if (numOfPlates > 1) hanoi(numOfPlates - 1, t1, t3, t2);
+
+        System.out.println(t1 + " -> " + t3);
+
+        if (numOfPlates > 1) hanoi(numOfPlates - 1, t2, t1, t3);
 
 
+        /*
+         keine rückkehr operation
+         gerade nur auf ungerade, ungerade nur auf gerade
+         größtmögliche auf freien stab wenn keine anderen züge möglich
+         */
     }
 
     // Ende Methoden
