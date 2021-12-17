@@ -1,6 +1,0 @@
-Normal vs weird version
-n - normalMoves / weridMoves
-1 - 1 / 2
-2 - 3 / 8
-3 -
-4
