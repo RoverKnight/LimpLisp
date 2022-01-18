@@ -51,11 +51,28 @@ public class Ramalam {
     }
 
     public static int[] insertionSort(int[] unsortedArray) {
-        return new int[]{0};
+
+
+
+
+        return new int[] {0};
     }
 
     public static int[] selectionSort(int[] unsortedArray) {
-        return new int[]{0};
+
+        // variablen vorbereiten
+        int[] sortedArray = new int[unsortedArray.length];
+
+        // x
+        while (true) {
+
+
+
+        }
+
+
+
+
     }
 
     /** überträgt inhalte eines arrays in eine liste; anordnung der inhalte wird nicht berücksichtigt! */
@@ -68,7 +85,7 @@ public class Ramalam {
         return list;
     }
 
-    public static int[] badCocktailSort(int[] unsortedArray) {
+    public static int[] selectionSortButCooler(int[] unsortedArray) {
 
         // variablen vorbereiten
         int highestIndex;

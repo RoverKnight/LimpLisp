@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import x_randomShit.FuckYouException;
 
-import java.util.Arrays;
-
 public class RamalamTest {
 
     int[] unsortedArray;
@@ -50,9 +48,9 @@ public class RamalamTest {
     }
 
     @Test
-    public void badCocktailSortTest() {
+    public void selectionSortButCoolerTest() {
         Ramalam.printArray(unsortedArray, "Unsorted:");
-        sortedArray = Ramalam.badCocktailSort(unsortedArray);
+        sortedArray = Ramalam.selectionSortButCooler(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
     }
 
