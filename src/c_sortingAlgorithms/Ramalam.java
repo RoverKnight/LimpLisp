@@ -2,8 +2,8 @@ package c_sortingAlgorithms;
 
 import x_randomShit.FuckYouException;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Ramalam {
@@ -52,11 +52,41 @@ public class Ramalam {
 
     public static int[] insertionSort(int[] unsortedArray) {
 
+        // variablen vorbereiten
+        List<Integer> sorted = new ArrayList<>();
+        List<Integer> unsorted = convertToList(unsortedArray);
 
+        // erstes element uebertragen; zum anfang muss min. ein element in der sortierten liste sein
+        sorted.add(unsorted.get(0));
+        unsorted.remove(0);
 
+        // x
+        while (!unsorted.isEmpty()) {
+            System.out.println();
+            System.out.println("inserting " + unsorted.get(0));
+            for (int i = 0; i < sorted.size(); i++) {
 
-        return new int[] {0};
+                if (unsorted.get(0) < sorted.get(i)) { // FIXME: index 0 OOB for length 0
+                    System.out.println(unsorted.get(0) + " < " + sorted.get(i) + " ::: insert left");
+                    sorted.add(i, unsorted.get(0));
+                    unsorted.remove(0);
+                    System.out.println(sorted);
+                    break;
+                }
+                else if (i == sorted.size() - 1) {
+                    System.out.println(unsorted.get(0) + " - reached end ::: insert at end");
+                    sorted.add(i + 1, unsorted.get(0));
+                    unsorted.remove(0);
+                    System.out.println(sorted);
+                    break;
+                }
+            }
+        }
+
+        return convertToArray(sorted);
     }
+
+    // TODO: HA: 10 Zahlen ausdenken; Schritt für Schritt sortieren (und SfS aufschreiben) ohne anzugeben welcher Algorithmus benutzt wird
 
     public static int[] selectionSort(int[] unsortedArray) {
 
@@ -64,18 +94,14 @@ public class Ramalam {
         int[] sortedArray = new int[unsortedArray.length];
 
         // x
-        while (true) {
+        // while (true) {}
 
 
 
-        }
-
-
-
-
+        return new int[] {0};
     }
 
-    /** überträgt inhalte eines arrays in eine liste; anordnung der inhalte wird nicht berücksichtigt! */
+    /** uebertraegt inhalte eines arrays in eine liste; anordnung der inhalte wird nicht beruecksichtigt! */
     public static List<Integer> convertToList(int[] array) {
         List<Integer> list = new ArrayList<>();
         for (int j : array) {
@@ -83,6 +109,15 @@ public class Ramalam {
             //System.out.println("A - " + array[i] + " ::: L - " + list.get(i));
         }
         return list;
+    }
+
+    public static int[] convertToArray(List<Integer> list) {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = list.get(0);
+            list.remove(0);
+        }
+        return array;
     }
 
     public static int[] selectionSortButCooler(int[] unsortedArray) {

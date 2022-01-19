@@ -60,4 +60,11 @@ public class RamalamTest {
         sortedArray = Ramalam.bubbleSort(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
     }
+
+    @Test
+    public void insertionSortTest() {
+        Ramalam.printArray(unsortedArray, "Unsorted:");
+        sortedArray = Ramalam.insertionSort(unsortedArray);
+        Ramalam.printArray(sortedArray, "Sorted: ");
+    }
 }
