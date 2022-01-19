@@ -60,45 +60,50 @@ public class Ramalam {
         sorted.add(unsorted.get(0));
         unsorted.remove(0);
 
-        // x
+        // sortieren solange nicht alle elemente einsortiert
         while (!unsorted.isEmpty()) {
-            System.out.println();
-            System.out.println("inserting " + unsorted.get(0));
             for (int i = 0; i < sorted.size(); i++) {
 
+                // wenn element kleiner als vergleichselement links davon einfügen
                 if (unsorted.get(0) < sorted.get(i)) { // FIXME: index 0 OOB for length 0
-                    System.out.println(unsorted.get(0) + " < " + sorted.get(i) + " ::: insert left");
                     sorted.add(i, unsorted.get(0));
                     unsorted.remove(0);
-                    System.out.println(sorted);
                     break;
                 }
+
+                // wenn kein größeres element gefunden, rechts anfuegen
                 else if (i == sorted.size() - 1) {
-                    System.out.println(unsorted.get(0) + " - reached end ::: insert at end");
                     sorted.add(i + 1, unsorted.get(0));
                     unsorted.remove(0);
-                    System.out.println(sorted);
                     break;
                 }
             }
         }
 
+        // als array zurueckgebens
         return convertToArray(sorted);
     }
 
     // TODO: HA: 10 Zahlen ausdenken; Schritt für Schritt sortieren (und SfS aufschreiben) ohne anzugeben welcher Algorithmus benutzt wird
 
-    public static int[] selectionSort(int[] unsortedArray) {
+    public static int[] selectionSort(int[] array) {
 
         // variablen vorbereiten
-        int[] sortedArray = new int[unsortedArray.length];
-
-        // x
-        // while (true) {}
-
+        int numOfSwitches = 0;
+        int lowestIndex = 0;
+        int temp;
 
 
-        return new int[] {0};
+        // sortieren
+        while (!isSorted(array)) {
+
+
+
+        }
+
+
+
+        return array;
     }
 
     /** uebertraegt inhalte eines arrays in eine liste; anordnung der inhalte wird nicht beruecksichtigt! */

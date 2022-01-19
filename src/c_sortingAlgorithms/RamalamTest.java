@@ -52,6 +52,7 @@ public class RamalamTest {
         Ramalam.printArray(unsortedArray, "Unsorted:");
         sortedArray = Ramalam.selectionSortButCooler(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
+        assert Ramalam.isSorted(sortedArray);
     }
 
     @Test
@@ -59,6 +60,7 @@ public class RamalamTest {
         Ramalam.printArray(unsortedArray, "Unsorted:");
         sortedArray = Ramalam.bubbleSort(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
+        assert Ramalam.isSorted(sortedArray);
     }
 
     @Test
@@ -66,5 +68,14 @@ public class RamalamTest {
         Ramalam.printArray(unsortedArray, "Unsorted:");
         sortedArray = Ramalam.insertionSort(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
+        assert Ramalam.isSorted(sortedArray);
+    }
+
+    @Test
+    public void selectionSortTest() {
+        Ramalam.printArray(unsortedArray, "Unsorted:");
+        sortedArray = Ramalam.bubbleSort(unsortedArray);
+        Ramalam.printArray(sortedArray, "Sorted: ");
+        assert Ramalam.isSorted(sortedArray);
     }
 }
