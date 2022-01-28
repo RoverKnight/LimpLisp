@@ -74,7 +74,7 @@ public class RamalamTest {
     @Test
     public void selectionSortTest() {
         Ramalam.printArray(unsortedArray, "Unsorted:");
-        sortedArray = Ramalam.bubbleSort(unsortedArray);
+        sortedArray = Ramalam.selectionSort(unsortedArray);
         Ramalam.printArray(sortedArray, "Sorted: ");
         assert Ramalam.isSorted(sortedArray);
     }

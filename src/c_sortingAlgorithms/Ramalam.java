@@ -89,19 +89,25 @@ public class Ramalam {
     public static int[] selectionSort(int[] array) {
 
         // variablen vorbereiten
-        int numOfSwitches = 0;
-        int lowestIndex = 0;
-        int temp;
+        int borderIndex = 0;
+        int lowestIndex;
 
 
-        // sortieren
+        // sortieren solange nicht sortiert
         while (!isSorted(array)) {
 
+            // kleinstes element in durchlaufmenge sucher
+            lowestIndex = borderIndex;
+            for (int i = borderIndex; i < array.length; i++) {
+                if (array[i] < array[lowestIndex]) lowestIndex = i;
+            }
 
-
+            // kleinstes element tauschen mit anfangselement der durchlaufmenge
+            int temp = array[lowestIndex];
+            array[lowestIndex] = array[borderIndex];
+            array[borderIndex] = temp;
+            borderIndex++; // durchlaufmenge auf unsortierte elemente reduzieren
         }
-
-
 
         return array;
     }
