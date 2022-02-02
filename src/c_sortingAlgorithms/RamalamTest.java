@@ -78,4 +78,13 @@ public class RamalamTest {
         Ramalam.printArray(sortedArray, "Sorted: ");
         assert Ramalam.isSorted(sortedArray);
     }
+
+    @Test
+    public void heapSortTest() {
+        Ramalam.printArray(unsortedArray, "Unsorted:");
+        Heapsorter heap = new Heapsorter(unsortedArray);
+        sortedArray = heap.sort();
+        Ramalam.printArray(sortedArray, "Sorted: ");
+        assert Ramalam.isSorted(sortedArray);
+    }
 }

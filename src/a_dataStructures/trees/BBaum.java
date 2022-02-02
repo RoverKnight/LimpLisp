@@ -73,7 +73,7 @@ public class BBaum {
         addElementRecursively(knoten, wurzel);
     }
 
-    public void addElementRecursively(Knoten knoten, Knoten anchor) {
+    private void addElementRecursively(Knoten knoten, Knoten anchor) {
         if (wurzel == null) wurzel = knoten;
         else {
             if (knoten.getInhalt() <= anchor.getInhalt()) {

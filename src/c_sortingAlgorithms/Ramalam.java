@@ -84,8 +84,6 @@ public class Ramalam {
         return convertToArray(sorted);
     }
 
-    // TODO: HA: 10 Zahlen ausdenken; Schritt für Schritt sortieren (und SfS aufschreiben) ohne anzugeben welcher Algorithmus benutzt wird
-
     public static int[] selectionSort(int[] array) {
 
         // variablen vorbereiten
@@ -218,12 +216,9 @@ public class Ramalam {
     }
 
     public static void printArray(int[] array, String identifier, int indent) {
-        String indentStr = "";
-        for (int i = 0; i < indent; i++) {
-            indentStr += " ";
-        }
+        System.out.println(" ".repeat(Math.max(0, indent)));
 
-        if (!identifier.isEmpty()) System.out.print(indent + identifier + " ");
+        if (!identifier.isEmpty()) System.out.print(identifier + " ");
         for (int i = 0; i < array.length; i++) {
             if (i != array.length - 1) System.out.print(array[i] + ", ");
             else System.out.print(array[i]);
