@@ -95,6 +95,7 @@ public class RamalamTest {
         Heapsorter heap = new Heapsorter(unsortedArray);
         sortedArray = heap.sort();
         Ramalam.printArray(sortedArray, "Sorted: ");
+        /*
         while (Ramalam.isSortedReverse(sortedArray)) {
             System.out.println();
             System.out.println();
@@ -104,7 +105,7 @@ public class RamalamTest {
             System.out.println();
             heap = new Heapsorter(unsortedArray);
             sortedArray = heap.sort();
-        }
+        } */
         assert Ramalam.isSortedReverse(sortedArray);
     }
 }
