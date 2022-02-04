@@ -11,11 +11,10 @@ public class RamalamTest {
 
     @BeforeEach
     public void randomizeInput() {
-        //unsortedArray = new int[(int) (Math.random() * 10)];
-        unsortedArray = new int[7];
+        unsortedArray = new int[100000];
         sortedArray = new int[unsortedArray.length];
         for (int i = 0; i < unsortedArray.length; i++) {
-            unsortedArray[i] = (int) (Math.random() * 100);
+            unsortedArray[i] = (int) (Math.random() * 1000);
             //if (Math.random() < 0.3) unsortedArray[i] *= -1;
         }
     }
@@ -91,10 +90,10 @@ public class RamalamTest {
 
     @Test
     public void heapSortSuperTest() {
-        Ramalam.printArray(unsortedArray, "Unsorted:");
+        //Ramalam.printArray(unsortedArray, "Unsorted:");
         Heapsorter heap = new Heapsorter(unsortedArray);
         sortedArray = heap.sort();
-        Ramalam.printArray(sortedArray, "Sorted: ");
+        //Ramalam.printArray(sortedArray, "Sorted: ");
         /*
         while (Ramalam.isSortedReverse(sortedArray)) {
             System.out.println();
