@@ -61,7 +61,4 @@ public class Heapsorter {
         // abbruch falls kein zweites kind vorhanden
         catch (ArrayIndexOutOfBoundsException ignored) {}
     }
-
-
-
 }
