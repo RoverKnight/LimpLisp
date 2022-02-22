@@ -11,10 +11,10 @@ public class RamalamTest {
 
     @BeforeEach
     public void randomizeInput() {
-        unsortedArray = new int[(int) (Math.random() * 25)];
+        unsortedArray = new int[100000];
         sortedArray = new int[unsortedArray.length];
         for (int i = 0; i < unsortedArray.length; i++) {
-            unsortedArray[i] = (int) (Math.random() * 100);
+            unsortedArray[i] = (int) (Math.random() * 1000);
             //if (Math.random() < 0.3) unsortedArray[i] *= -1;
         }
     }
@@ -85,6 +85,26 @@ public class RamalamTest {
         Heapsorter heap = new Heapsorter(unsortedArray);
         sortedArray = heap.sort();
         Ramalam.printArray(sortedArray, "Sorted: ");
-        assert Ramalam.isSorted(sortedArray);
+        assert Ramalam.isSortedReverse(sortedArray);
+    }
+
+    @Test
+    public void heapSortSuperTest() {
+        //Ramalam.printArray(unsortedArray, "Unsorted:");
+        Heapsorter heap = new Heapsorter(unsortedArray);
+        sortedArray = heap.sort();
+        //Ramalam.printArray(sortedArray, "Sorted: ");
+        /*
+        while (Ramalam.isSortedReverse(sortedArray)) {
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            randomizeInput();
+            Ramalam.printArray(unsortedArray, "Unsorted:");
+            System.out.println();
+            heap = new Heapsorter(unsortedArray);
+            sortedArray = heap.sort();
+        } */
+        assert Ramalam.isSortedReverse(sortedArray);
     }
 }
