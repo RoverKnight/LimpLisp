@@ -1,0 +1,2 @@
+- Trainer-Segway bzw Kunde-Segway sollten (?) n:m sein (??)
+-

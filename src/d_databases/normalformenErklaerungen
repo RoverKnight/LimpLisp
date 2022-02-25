@@ -1,0 +1,72 @@
+Normalisierung
+==============
+
+1. Normalform
+-------------
+
+Regeln:
+  - Jedes Attribut muss atomar sein
+    -> Z.B. wird Datum in Tag, Monat & Jahr gespalten
+  - Relationen sind Wiederholungsfrei, d.h. es besteht keine unnotöige Redundanz
+    -> Z.B. werden Daten eines Buches im Buchhandel nur einmal gespeichert, unabhängig davon, wie oft es gekauft wird
+  - Es darf nicht passieren, dass ein Attribut nicht aufgenommen werden kann aufgrund einer Übersteigung des Wertebereiches
+    -> Z.B. wenn pro Person Attribute Kind1 bis Kind3 vorhanden sind, diese jedoch 4 Kinder hat
+
+
+2. Normalform
+-------------
+
+Regeln:
+  - Bedingungen der 1. NF sind erfüllt
+  - Nicht-Schlüsselattribute müssen voll funktional abhängig von ALLEN Primärschlüsseln innerhalb einer Relation sein
+    -> Voll funktional abhängig = logisch voneinander abhängig
+    -> Z.B. ist das Grundungsjahr einer Band nicht abhängig von der CD_ID
+    -> Z.B. 
+Vorteil: 
+  - Es wird nur EIN Sachverhalt modelliert
+  - Reduzierung von Redundanz
+  - Reduzierung von Inkonsistenzgefahr
+
+
+3. Normalform
+-------------
+
+Regeln:
+  - Bedingungen der 2. NF sind erfüllt
+  - Kein Nichtschlüsselattribut darf von anderen Nichtschlüsselattributen funktional abhängig sein
+  - Nichtschlüssel dürfen ausschließlich von Primärschlüsseln bzw. Schlüsselkandidaten abhängen
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
